@@ -14,12 +14,12 @@ on:
     types: [started]
 
 env:
-  MANIFEST: git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0
+  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp -b twrp-12.1
   DEVICE: X682C
-  DT_LINK: https://github.com/Infinix-G70/android_device_twrp_infinix_x682c.git -b master
-  DT_PATH: device/infinix/X682C
+  DT_LINK: https://github.com/takumi021/android_device_realme_r5x-twrp -b android-12.1-twrp
+  DT_PATH: device/realme/r5x
   TARGET: recoveryimage
-  TZ: Asia/Jakarta
+  TZ: Asia/Delhi
 
 jobs:
   build:
@@ -35,8 +35,8 @@ jobs:
             sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
             docker rmi `docker images -q`
             sudo apt-get remove account-plugin-facebook account-plugin-flickr account-plugin-jabber account-plugin-salut account-plugin-twitter account-plugin-windows-live account-plugin-yahoo aisleriot brltty duplicity empathy empathy-common example-content gnome-accessibility-themes gnome-contacts gnome-mahjongg gnome-mines gnome-orca gnome-screensaver gnome-sudoku gnome-video-effects gnomine landscape-common libreoffice-avmedia-backend-gstreamer libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-gnome libreoffice-gtk libreoffice-impress libreoffice-math libreoffice-ogltrans libreoffice-pdfimport libreoffice-style-galaxy libreoffice-style-human libreoffice-writer libsane libsane-common mcp-account-manager-uoa python3-uno rhythmbox rhythmbox-plugins rhythmbox-plugin-zeitgeist sane-utils shotwell shotwell-common telepathy-gabble telepathy-haze telepathy-idle telepathy-indicator telepathy-logger telepathy-mission-control-5 telepathy-salut totem totem-common totem-plugins printer-driver-brlaser printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-m2300w printer-driver-ptouch printer-driver-splix
-            git config --global user.name "xoo2001"
-            git config --global user.email "ekora2001@gmail.com"         
+            git config --global user.name "fujiwaratofuguy"
+            git config --global user.email "stepper1431@gmail.com"         
             sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php* 
             sudo -E apt-get clean
             sudo -E apt-get -qq update
@@ -55,8 +55,8 @@ jobs:
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
-             
+              . build/envsetup.sh && lunch twrp_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
+         
        - name: Upload recovery image 
          run: |
               cd work/out/target/product/$DEVICE
