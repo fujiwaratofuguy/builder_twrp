@@ -15,7 +15,7 @@ on:
 
 env:
   MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp -b twrp-12.1
-  DEVICE: X682C
+  DEVICE: r5x
   DT_LINK: https://github.com/takumi021/android_device_realme_r5x-twrp -b android-12.1-twrp
   DT_PATH: device/realme/r5x
   TARGET: recoveryimage
