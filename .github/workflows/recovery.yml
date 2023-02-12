@@ -26,12 +26,13 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
+         
+       - name: Maximize build disk space
+         uses: easimon/maximize-build-space@v6
+       
        - name: Checkout
          uses: actions/checkout@master
          
-         - name: Maximize build disk space
-           uses: easimon/maximize-build-space@v6
-
        - name: Initializing environment
          run: |
             sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
