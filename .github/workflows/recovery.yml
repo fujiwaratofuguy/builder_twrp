@@ -29,6 +29,8 @@ jobs:
        - name: Checkout
          uses: actions/checkout@master
          
+         - name: Maximize build disk space
+           uses: easimon/maximize-build-space@v6
 
        - name: Initializing environment
          run: |
